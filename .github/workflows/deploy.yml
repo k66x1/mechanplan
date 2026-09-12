@@ -7,6 +7,10 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    env:
+      PROXY_URL: ${{ vars.PROXY_URL || 'https://example.com' }}
+      WEB_PUSH_BACKEND_ORIGIN: ${{ vars.WEB_PUSH_BACKEND_ORIGIN || 'https://example.com' }}
+      WEB_PUSH_VAPID_PUBLIC_KEY: ${{ vars.WEB_PUSH_VAPID_PUBLIC_KEY || 'A_PLACEHOLDER_VAPID_KEY_FOR_CI_BUILDS_ONLY' }}
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3
